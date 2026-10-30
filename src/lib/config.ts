@@ -21,7 +21,7 @@ export const CONFIG = {
   syncWallet: true,
 
   /** Optional developer-API key service (not part of this repo yet) */
-  apiKeyEndpoint: process.env.NEXT_PUBLIC_API_KEY_ENDPOINT || null,
+  apiKeyEndpoint: process.env.NEXT_PUBLIC_API_KEY_ENDPOINT || '/api/api-keys',
 
   firebase: {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || 'AIzaSyDgw9dU2t4tU6PJurnbd6QhtDavh9ZtuMQ',
