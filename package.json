@@ -28,6 +28,6 @@
     "tsx"
   },
   "engines": {
-    "node"
+    "node": ">=22"
   }
 }
