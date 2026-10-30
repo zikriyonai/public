@@ -1,0 +1,233 @@
+/* ==========================================================================
+   ZIKRIYON AI — FEATURE STYLES (wallet · plans · billing · usage · projects …)
+   Uses ONLY the design tokens of index.html (--primary, --surface, --border …)
+   so every new screen follows Light / Dark / Blue themes and the custom accents.
+   ========================================================================== */
+
+/* ---------- header credit pill ---------- */
+.zik-pill{
+  position:relative;display:inline-flex;align-items:center;gap:5px;
+  height:38px;padding:0 13px 0 10px;border-radius:99px;cursor:pointer;
+  background:var(--surface);color:var(--primary);
+  border:1px solid var(--border);box-shadow:var(--shadow-xs);
+  font-family:inherit;font-size:.8rem;font-weight:800;letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+  transition:all .25s var(--ease);
+}
+.zik-pill .material-symbols-rounded{font-size:18px;font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 24}
+.zik-pill:hover{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px var(--primary-soft)}
+.zik-pill:active{transform:scale(.94)}
+.zik-pill.low{color:var(--warn)}
+.zik-pill.empty{color:var(--err)}
+.zik-pill .zik-dot{position:absolute;top:3px;right:3px;width:9px;height:9px;border-radius:50%;background:var(--ok);border:2px solid var(--surface-solid);display:none}
+.zik-pill.has-dot .zik-dot{display:block}
+
+/* ---------- drawer navigation ---------- */
+.zik-nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.zik-nav-item{
+  display:flex;align-items:center;gap:9px;padding:10px 11px;border-radius:14px;
+  background:var(--surface-2);border:1px solid var(--border);cursor:pointer;
+  font-family:inherit;font-size:.78rem;font-weight:700;color:var(--text);text-align:left;
+  transition:all .25s var(--ease);position:relative;overflow:hidden;
+}
+.zik-nav-item:hover{background:var(--surface-solid);border-color:var(--primary);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.zik-nav-item:active{transform:scale(.96)}
+.zik-nav-item .ni{
+  width:28px;height:28px;flex:0 0 28px;border-radius:9px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;box-shadow:0 4px 10px var(--primary-soft);
+}
+.zik-nav-item .ni .material-symbols-rounded{font-size:16px}
+.zik-nav-item .nb{margin-left:auto;font-size:.62rem;padding:2px 7px;border-radius:99px;background:var(--primary-soft);color:var(--primary);font-weight:800}
+.zik-nav-item.hidden{display:none}
+.zik-nav-title{font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);margin:2px 2px 9px}
+
+/* ---------- modals ---------- */
+.modal-card.zik-wide{max-width:780px}
+.modal-card.zik-mid{max-width:560px}
+.zik-sheet-modal{align-items:flex-end}
+.zik-sheet-modal .modal-card{max-width:520px;border-radius:26px 26px 0 0;margin-bottom:-16px;padding-bottom:16px}
+@media (min-width:640px){ .zik-sheet-modal{align-items:center} .zik-sheet-modal .modal-card{border-radius:24px;margin-bottom:0} }
+
+.zik-hero{
+  display:flex;flex-direction:column;gap:6px;padding:20px 18px;border-radius:18px;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));box-shadow:0 14px 34px var(--primary-soft);
+}
+.zik-hero::after{content:'';position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.12)}
+.zik-hero small{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.zik-hero .big{font-size:2.2rem;font-weight:900;letter-spacing:-.04em;line-height:1.05;font-variant-numeric:tabular-nums}
+.zik-hero .big span{font-size:.9rem;font-weight:700;opacity:.85;margin-left:4px;letter-spacing:0}
+.zik-hero .sub{font-size:.8rem;opacity:.9}
+.zik-hero .acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;position:relative;z-index:1}
+.zik-hero .btn{padding:9px 15px;font-size:.8rem;background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px)}
+.zik-hero .btn:hover{background:rgba(255,255,255,.32)}
+.zik-hero .btn.solid{background:#fff;color:var(--primary-2);border-color:#fff}
+
+.zik-tabs{display:flex;gap:7px;overflow-x:auto;padding:2px 2px 8px;margin:0 -2px;scrollbar-width:none;position:sticky;top:0;z-index:1}
+.zik-tabs::-webkit-scrollbar{display:none}
+.zik-chip{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:99px;
+  background:var(--surface-2);border:1px solid var(--border);color:var(--text-2);cursor:pointer;
+  font-family:inherit;font-size:.78rem;font-weight:700;transition:all .22s var(--ease);
+}
+.zik-chip .material-symbols-rounded{font-size:16px}
+.zik-chip:hover{border-color:var(--primary);color:var(--primary)}
+.zik-chip.active{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border-color:transparent;box-shadow:0 6px 16px var(--primary-soft)}
+
+/* ---------- plan cards ---------- */
+.zik-plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:11px}
+.zik-plan{
+  position:relative;display:flex;flex-direction:column;gap:9px;padding:15px;border-radius:var(--radius);
+  background:var(--surface-2);border:2px solid var(--border);transition:all .28s var(--ease);animation:msgIn .35s var(--ease) both;
+}
+.zik-plan:hover{transform:translateY(-3px);border-color:var(--primary);box-shadow:0 14px 30px var(--primary-soft)}
+.zik-plan.active{border-color:var(--primary);background:var(--primary-soft);box-shadow:0 0 0 3px var(--primary-soft)}
+.zik-plan.off{opacity:.55}
+.zik-plan h4{font-size:.95rem;font-weight:800;letter-spacing:-.01em;color:var(--text);padding-right:62px}
+.zik-plan .price{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;color:var(--text);font-variant-numeric:tabular-nums}
+.zik-plan .price small{font-size:.74rem;font-weight:700;color:var(--text-3);margin-left:3px;letter-spacing:0}
+.zik-plan .credits{display:flex;align-items:center;gap:6px;font-size:.84rem;font-weight:800;color:var(--primary)}
+.zik-plan .credits .material-symbols-rounded{font-size:17px;font-variation-settings:'FILL' 1}
+.zik-plan .credits em{font-style:normal;font-size:.7rem;font-weight:800;color:var(--ok);background:rgba(16,185,129,.14);padding:2px 7px;border-radius:99px}
+.zik-plan ul{list-style:none;display:flex;flex-direction:column;gap:5px;font-size:.76rem;color:var(--text-2)}
+.zik-plan li{display:flex;gap:7px;align-items:flex-start;line-height:1.35}
+.zik-plan li .material-symbols-rounded{font-size:14px;color:var(--ok);margin-top:1px;flex:0 0 14px}
+.zik-plan li.no .material-symbols-rounded{color:var(--text-3)}
+.zik-plan li.no{color:var(--text-3)}
+.zik-plan .btn{margin-top:auto;padding:10px 14px;font-size:.8rem}
+.zik-badge{
+  position:absolute;top:11px;right:11px;font-size:.6rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;border-radius:99px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;
+}
+.zik-badge.cur{background:var(--ok)}
+.zik-note{font-size:.74rem;color:var(--text-3);line-height:1.5}
+.zik-note b{color:var(--text-2)}
+.zik-warn{font-size:.78rem;padding:11px 13px;border-radius:12px;background:rgba(245,158,11,.12);color:var(--warn);border:1px solid rgba(245,158,11,.28);line-height:1.45;font-weight:600}
+.zik-info{font-size:.78rem;padding:11px 13px;border-radius:12px;background:var(--primary-soft);color:var(--text-2);border:1px solid var(--border);line-height:1.5}
+.zik-ok{font-size:.78rem;padding:11px 13px;border-radius:12px;background:rgba(16,185,129,.12);color:var(--ok);border:1px solid rgba(16,185,129,.28);font-weight:600}
+
+/* ---------- generic building blocks ---------- */
+.zik-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.zik-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media (max-width:420px){ .zik-grid3{grid-template-columns:1fr 1fr} }
+.zik-stat{padding:13px;border-radius:14px;background:var(--surface-2);border:1px solid var(--border);display:flex;flex-direction:column;gap:3px}
+.zik-stat small{font-size:.68rem;font-weight:700;color:var(--text-3);letter-spacing:.05em;text-transform:uppercase}
+.zik-stat b{font-size:1.25rem;font-weight:900;letter-spacing:-.02em;color:var(--text);font-variant-numeric:tabular-nums}
+.zik-stat span{font-size:.7rem;color:var(--text-3)}
+.zik-quick{display:flex;flex-wrap:wrap;gap:8px}
+.zik-quick .zik-chip b{font-weight:900;color:inherit}
+.zik-quick .zik-chip small{font-size:.66rem;opacity:.8;font-weight:700}
+.zik-inline{display:flex;gap:8px;align-items:stretch}
+.zik-inline .input{flex:1;min-width:0}
+.zik-inline .btn{flex:0 0 auto;padding:12px 16px}
+.zik-label{display:block;font-size:.72rem;font-weight:700;color:var(--text-3);margin:0 0 5px 2px;letter-spacing:.03em}
+.zik-field{display:flex;flex-direction:column}
+select.input{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--text-3) 50%),linear-gradient(135deg,var(--text-3) 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:34px}
+textarea.input{resize:vertical;min-height:84px;line-height:1.5}
+
+.zik-switch{position:relative;width:46px;height:27px;flex:0 0 46px;border-radius:99px;border:none;cursor:pointer;background:var(--border-strong);transition:background .25s var(--ease)}
+.zik-switch::after{content:'';position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:transform .28s var(--ease)}
+.zik-switch.on{background:linear-gradient(135deg,var(--primary),var(--primary-2))}
+.zik-switch.on::after{transform:translateX(19px)}
+.zik-row-sub{display:block;font-size:.7rem;color:var(--text-3);font-weight:500;margin-top:2px;line-height:1.35}
+
+.zik-list{display:flex;flex-direction:column;gap:8px}
+.zik-item{display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:13px;background:var(--surface-solid);border:1px solid var(--border);font-size:.82rem}
+.zik-item .ic{width:34px;height:34px;flex:0 0 34px;border-radius:10px;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary)}
+.zik-item .ic .material-symbols-rounded{font-size:18px}
+.zik-item .meta{flex:1;min-width:0}
+.zik-item .meta b{display:block;font-size:.84rem;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.zik-item .meta small{display:block;font-size:.7rem;color:var(--text-3);margin-top:2px}
+.zik-item .amt{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.zik-item .amt.pos{color:var(--ok)} .zik-item .amt.neg{color:var(--text-2)}
+.zik-item .icon-btn{width:32px;height:32px;flex:0 0 32px;box-shadow:none}
+.zik-item .icon-btn .material-symbols-rounded{font-size:17px}
+.zik-item.click{cursor:pointer;transition:all .22s var(--ease)}
+.zik-item.click:hover{border-color:var(--primary);transform:translateX(3px)}
+.zik-empty{text-align:center;padding:26px 10px;color:var(--text-3);font-size:.82rem;line-height:1.55}
+.zik-empty .material-symbols-rounded{display:block;font-size:34px;opacity:.45;margin:0 auto 8px}
+
+/* usage bars */
+.zik-bars{display:flex;align-items:flex-end;gap:7px;height:120px;padding-top:6px}
+.zik-bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%}
+.zik-bar i{display:block;width:100%;min-height:3px;border-radius:7px 7px 3px 3px;background:linear-gradient(180deg,var(--accent),var(--primary));transition:height .8s var(--ease)}
+.zik-bar small{font-size:.6rem;color:var(--text-3);font-weight:700}
+.zik-hbar{display:flex;flex-direction:column;gap:5px;margin:8px 0}
+.zik-hbar .t{display:flex;justify-content:space-between;font-size:.76rem;font-weight:600;color:var(--text-2)}
+.zik-hbar .t b{color:var(--text);font-variant-numeric:tabular-nums}
+
+/* daily reward grid */
+.zik-days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.zik-day{padding:9px 2px;border-radius:12px;text-align:center;background:var(--surface-solid);border:1px solid var(--border);font-size:.66rem;font-weight:700;color:var(--text-3)}
+.zik-day b{display:block;font-size:.86rem;font-weight:900;color:var(--text);margin-top:3px}
+.zik-day.done{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3)}
+.zik-day.done b{color:var(--ok)}
+.zik-day.next{border-color:var(--primary);background:var(--primary-soft);box-shadow:0 0 0 3px var(--primary-soft)}
+
+/* ---------- banner under header ---------- */
+#zik-banner{
+  position:fixed;left:50%;top:calc(72px + env(safe-area-inset-top));transform:translate(-50%,-140%);z-index:590;
+  width:min(94vw,520px);display:flex;align-items:center;gap:10px;padding:10px 12px 10px 14px;border-radius:16px;
+  background:var(--surface-solid);border:1px solid var(--border);border-left:4px solid var(--primary);box-shadow:var(--shadow);
+  font-size:.78rem;font-weight:600;color:var(--text);transition:transform .4s var(--ease);
+}
+#zik-banner.show{transform:translate(-50%,0)}
+#zik-banner.warn{border-left-color:var(--warn)} #zik-banner.err{border-left-color:var(--err)} #zik-banner.ok{border-left-color:var(--ok)}
+#zik-banner .t{flex:1;line-height:1.4}
+#zik-banner .btn{padding:7px 12px;font-size:.72rem;border-radius:99px;flex:0 0 auto}
+#zik-banner .x{width:26px;height:26px;border-radius:50%;border:none;background:var(--surface-2);color:var(--text-3);cursor:pointer;display:grid;place-items:center;flex:0 0 26px}
+#zik-banner .x .material-symbols-rounded{font-size:15px}
+
+/* ---------- chat additions ---------- */
+.zik-cost{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:.66rem;font-weight:600;color:var(--text-3);letter-spacing:.02em}
+.zik-cost .material-symbols-rounded{font-size:12px}
+.zik-lock{position:absolute;inset:auto 12px auto auto;top:10px;display:inline-flex;align-items:center;gap:4px;font-size:.62rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff}
+.zik-lock .material-symbols-rounded{font-size:12px}
+.model-item{position:relative}
+.model-item.zik-locked{opacity:.62}
+.model-item .zik-tier{display:inline-block;margin-left:7px;font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:99px;background:var(--primary-soft);color:var(--primary);vertical-align:2px;letter-spacing:.03em}
+.zik-proj-chip{display:inline-flex;align-items:center;gap:7px;margin:0 0 7px 4px;padding:5px 6px 5px 10px;border-radius:99px;background:var(--primary-soft);color:var(--primary);font-size:.72rem;font-weight:800}
+.zik-proj-chip button{width:20px;height:20px;border-radius:50%;border:none;background:var(--primary);color:#fff;cursor:pointer;display:grid;place-items:center}
+.zik-proj-chip button .material-symbols-rounded{font-size:12px}
+
+/* ---------- projects ---------- */
+.zik-proj{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:15px;background:var(--surface-solid);border:1px solid var(--border);cursor:pointer;transition:all .25s var(--ease)}
+.zik-proj:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.zik-proj .em{width:44px;height:44px;flex:0 0 44px;border-radius:13px;display:grid;place-items:center;font-size:1.4rem;background:var(--primary-soft)}
+.zik-proj b{display:block;font-size:.9rem;font-weight:800}
+.zik-proj small{display:block;font-size:.74rem;color:var(--text-3);margin-top:3px;line-height:1.4}
+.zik-emoji{display:flex;flex-wrap:wrap;gap:6px}
+.zik-emoji button{width:38px;height:38px;border-radius:11px;border:2px solid var(--border);background:var(--surface-2);font-size:1.15rem;cursor:pointer;transition:all .2s var(--ease)}
+.zik-emoji button.on{border-color:var(--primary);background:var(--primary-soft)}
+
+/* ---------- misc ---------- */
+.zik-code{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;letter-spacing:.06em;padding:11px 14px;border-radius:12px;background:var(--code-bg);color:#7dd3fc;word-break:break-all;user-select:all}
+.zik-kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.8rem}
+.zik-kv span{color:var(--text-3);font-weight:600}.zik-kv b{color:var(--text);text-align:right;font-weight:700;word-break:break-word}
+.zik-h{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin:4px 2px -4px}
+.zik-prose{font-size:.82rem;line-height:1.65;color:var(--text-2)}
+.zik-prose h4{font-size:.86rem;color:var(--text);margin:12px 0 4px;font-weight:800}
+.zik-prose ul{padding-left:18px;margin:4px 0}
+.zik-sheet-ico{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin:0 auto 4px;background:var(--primary-soft);color:var(--primary)}
+.zik-sheet-ico .material-symbols-rounded{font-size:28px}
+.zik-sheet-ico.warn{background:rgba(245,158,11,.14);color:var(--warn)} .zik-sheet-ico.err{background:rgba(239,68,68,.14);color:var(--err)}
+.zik-center{text-align:center}
+.zik-center h3{font-size:1.1rem;font-weight:800;letter-spacing:-.02em}
+.zik-center p{font-size:.84rem;color:var(--text-2);line-height:1.55;margin-top:6px}
+.zik-stack{display:flex;flex-direction:column;gap:9px}
+.zik-test{display:inline-block;font-size:.62rem;font-weight:800;letter-spacing:.08em;padding:2px 8px;border-radius:99px;background:rgba(245,158,11,.16);color:var(--warn);vertical-align:2px}
+.zik-spin{animation:spin 1s linear infinite}
+@media (max-width:420px){
+  .zik-pill{padding:0 10px 0 8px;height:36px;font-size:.74rem}
+  .zik-nav-item{padding:9px;font-size:.74rem}
+  .zik-plans{grid-template-columns:1fr}
+  .zik-hero .big{font-size:1.9rem}
+}
+
+/* keep the header on one line on 360px phones (pill added next to the bell) */
+@media (max-width:400px){
+  .head{padding-left:10px;padding-right:10px;gap:6px}
+  .head-left,.head-right{gap:5px;min-width:0}
+  .head-right .icon-btn{width:36px;height:36px;flex:0 0 36px}
+  .brand{gap:7px}.brand-text b{font-size:.94rem}
+  .auth-btn{padding:8px 13px;font-size:.8rem}
+}

@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+
+    /* ---- user space ---- */
+    match /users/{uid} {
+      match /sessions/{id}   { allow read, write: if isOwner(uid); }
+      match /projects/{id}   { allow read, write: if isOwner(uid); }
+      match /billing/{doc}   { allow read, write: if isOwner(uid); }   // client-authoritative wallet (see README)
+      match /apiKeys/{id}    { allow read: if isOwner(uid); allow write: if false; }
+      /* grants are written ONLY by the server (admin approvals, referrals) — users can read them, never write */
+      match /grants/{id}     { allow read: if isOwner(uid); allow write: if false; }
+    }
+
+    /* ---- payments: orders are created/updated only by the server; users may read their own ---- */
+    match /orders/{id} {
+      allow read: if signedIn() && resource.data.uid == request.auth.uid;
+      allow write: if false;
+    }
+    match /utrs/{id} { allow read, write: if false; }
+
+    /* ---- student verification: user can file a PENDING request; only the server (admin) can change status ---- */
+    match /studentVerifications/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid) && request.resource.data.status == 'pending' && request.resource.data.uid == uid;
+      allow update, delete: if false;
+    }
+
+    /* ---- referral ---- */
+    match /referralCodes/{code} {
+      allow read: if false;
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if false;
+    }
+    match /referralClaims/{uid} { allow read: if isOwner(uid); allow write: if false; }
+
+    /* ---- write-only inboxes ---- */
+    match /leads/{id}        { allow create: if true; allow read, update, delete: if false; }
+    match /feedback/{id}     { allow create: if true; allow read, update, delete: if false; }
+    match /teamInvites/{id}  { allow create: if signedIn() && request.resource.data.owner == request.auth.uid; allow read, update, delete: if false; }
+
+    match /{document=**} { allow read, write: if false; }
+  }
+}
